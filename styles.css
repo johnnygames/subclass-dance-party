@@ -13,6 +13,10 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:right;
 }
+.lineUp {
+  padding:5px 12px;
+  float:left;
+}
 .topbar{
   height:32px;
   background-color: #555;
@@ -24,4 +28,19 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+.batmanDancer{
+  background:url('6021cd7946c72ae00fad72853e5c42a7.jpg');
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  position: absolute;
+}
+
+.iceDancer{
+  background: url('ice-skate-4.jpg');
+  width: 50px;
+  height: 50px;
+  background-size: 50px 50px;
+  position: absolute;
 }
