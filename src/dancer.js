@@ -3,6 +3,7 @@ var Dancer = function(top, left, timeBetweenSteps){
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
+  this.timeFunc = undefined;
   this.$node = $('<span class="dancer"></span>');
   this.step();
   this.setPosition(top, left);
@@ -10,9 +11,10 @@ var Dancer = function(top, left, timeBetweenSteps){
 
 Dancer.prototype.step = function(){
   var that = this;
-  setTimeout(function() {
+  var time = setTimeout(function() {
     that.step()
   }, this.timeBetweenSteps);
+  this.timeFunc = time;
 };
 
 Dancer.prototype.setPosition = function(top, left){
@@ -29,8 +31,8 @@ Dancer.prototype.lineUp = function(){
     left: 0
   };
   this.$node.css(newSetting);
+  clearTimeout(this.timeFunc);
 };
-
 
 // the basic dancer doesn't do anything interesting at all on each step,
 // it just schedules the next step

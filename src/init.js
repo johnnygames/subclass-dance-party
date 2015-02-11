@@ -3,11 +3,18 @@ $(document).ready(function(){
 
   $(".lineUp").on("click", function(event){
     for(var i = 0; i < window.dancers.length; i++){
-      console.log(i);
-      console.log(dancers[i]);
       dancers[i].lineUp();
     }
   });
+
+  var distance = function(i, j){
+    var topDis = Math.abs(i.top - j.top);
+    //console.log(topDis);
+    var widthDis = Math.abs(i.left - j.left);
+    //console.log(widthDis);
+    var distance = Math.floor(Math.sqrt(Math.pow(topDis, 2) + Math.pow(widthDis, 2)));
+    return distance;
+  }
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -38,9 +45,26 @@ $(document).ready(function(){
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
 
-    if(window.dancers.length > 1){
-      
+    $(".dancer").mouseover(function(event){
+      $(this).css('border-color', 'green');
+    });
+
+    if(window.dancers.length > 2){
+      for(var i = 0; i < window.dancers.length; i++){
+        for(var j = 0; j < window.dancers.length; j++){
+          var dis = distance(window.dancers[i], window.dancers[j]);
+          if (dis < 100) {
+            window.dancers[i].$node.animate({left: '+=50'}, 400);
+          }
+        }
+      }
     }
+      // var dis = distance(window.dancers[0], window.dancers[1]);
+      // if (dis < 100) {
+      //   window.dancers[0].animate({left: '+=50', opacity: '0.5'}, 400);
+      //   $('body').css('background-color', 'white');
+      // }
   });
+
 });
 

@@ -1,6 +1,6 @@
 var IceDancer = function(top, left, timeBetweenSteps){
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="iceDancer"></span>');
+  this.$node = $('<span class="dancer" id="iceDancer"></span>');
   this.setPosition(top, left);
 };
 
@@ -11,9 +11,15 @@ IceDancer.prototype.step = function(){
   Dancer.prototype.step.call(this);
   var node = this.$node;
   var count = 0;
-  while(count < 100){
-    node.animate({left: '1250px', opacity: '0.5'}, "slow");
-    node.animate({left: '0px', opacity: '1'}, "slow");
+  this.move = true;
+  while(this.move){
+    node.animate({left: '+=50', opacity: '0.5'}, 400)
+    .animate({top: '+=50', opacity: '0.5'}, 400)
+    .animate({left: '-=50', opacity: '1'}, 400)
+    .animate({top: '-=50', opacity: '1'}, 400);
     count++;
+    if(count >= 100){
+      this.move = false;
+    }
   }
 };

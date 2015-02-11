@@ -29,7 +29,9 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
-.batmanDancer{
+#batman{
+  border:0;
+  border-radius:0;
   background:url('6021cd7946c72ae00fad72853e5c42a7.jpg');
   width: 30px;
   height: 30px;
@@ -37,7 +39,9 @@ body, a:link, a:visited, a:active{
   position: absolute;
 }
 
-.iceDancer{
+#iceDancer{
+  border:0;
+  border-radius:0;
   background: url('ice-skate-4.jpg');
   width: 50px;
   height: 50px;
